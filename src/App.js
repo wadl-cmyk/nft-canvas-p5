@@ -114,25 +114,24 @@ export default function App() {
 
     // console.log(img.pixels);
 
+    // get pixels from redis database
     async function updatePixelsDB() {
 
-      var res = await axios.get('http://127.0.0.1:80/api/getboard');
-      // let pixels_db = res.data;
+      var res = await axios.get('https://canvas-api-test2.herokuapp.com/api/getboard');
       console.log('loadedbits')
       var array = res.data.toString().split("\\x");
       array.splice(0, 1);
-
       
       let decimal = parseInt(array[0], 16);
 
-      /*
+      
       for (let i = 0; i < 1000000; i++) {
         let index = i;
         let colorindex = parseInt(array[i], 16);
         let color = hexRgb(palette[colorindex])
         writeColor(img, index, color.red, color.green, color.blue, 255);
       }
-      */
+      
 
       img.updatePixels();
     }
@@ -172,7 +171,7 @@ export default function App() {
     // p5.translate(p5.width/2,p5.height/2);
     //p5.translate(p5.mouseX, p5.mouseY);
     
-    // p5.scale(zoom);
+    p5.scale(zoom);
     //p5.translate(p5.mouseX, p5.mouseY);
     p5.noSmooth()
     p5.image(img, 0, 0);
@@ -249,11 +248,9 @@ export default function App() {
 
 
   return(
-    <TransformWrapper>
-      <TransformComponent>
-        <Sketch mouseClicked={mouseClicked} mouseWheel = {mouseWheel} touchMoved = {touchMoved} preload = {preload} setup={setup} draw={draw} />
-      </TransformComponent>
-    </TransformWrapper>
+
+    <Sketch mouseClicked={mouseClicked} mouseWheel = {mouseWheel} touchMoved = {touchMoved} preload = {preload} setup={setup} draw={draw} />
+
   )
 } 
 
