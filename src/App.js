@@ -192,12 +192,12 @@ export default function App() {
     pg.noStroke();
     pg.noSmooth();
     pg.fill(color);
-    // pg.rect(p5.round(p5.mouseX/zoom), p5.round(p5.mouseY/zoom), size, size);
+    pg.rect(p5.round(p5.mouseX/zoom), p5.round(p5.mouseY/zoom), size, size);
     // pg.rect(p5.mouseX, p5.mouseY, size, size);
-    let black = p5.color(0);
-    img.loadPixels();
-    p5.set(p5.mouseX, p5.mouseY, black);
-    img.updatePixels();
+    // let black = p5.color(0);
+    // img.loadPixels();
+    // p5.set(p5.mouseX, p5.mouseY, black);
+    // img.updatePixels();
 
     return false;
   };
